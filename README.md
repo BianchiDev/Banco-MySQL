@@ -9,7 +9,7 @@
 ><img src="./img/índice.png" alt="exemplo imagem" width="75%" height="60%"></p>
 
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
+> Este projeto tem a finalidade de treinar em diferentes situações a forma de modelagem, criação e implementação de um banco de dados, usando DDL, DML
 
 ### Ajustes e melhorias
 
