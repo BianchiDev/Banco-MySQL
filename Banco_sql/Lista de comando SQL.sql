@@ -320,3 +320,12 @@ alter table nome_da_tabela add constraint nome_da_chave_primaria primary key(cha
  /*############################## TESTANDO A SEGUNDA FORMA NORMAL #######################################################################*/
  
  
+ /*################################### curso SQL e PL/SQL Mv sistemas#########################*/
+ select nome_da_coluna from nome_da_tabela where nome_da_coluna like 'palavra_de_busca%';
+
+ select --> "O que buscamos?"
+ from -->"Onde buscamos?"
+where --> "Como buscamos?"
+
+/*Buscar todos os pacientes que nasceram desde 1990*/
+select NM_PACIENTE from PACIENTE where DT_NASCMENTO >= to_date('01/01/1990','DD/MM/YYYY')
