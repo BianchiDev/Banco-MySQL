@@ -321,11 +321,53 @@ alter table nome_da_tabela add constraint nome_da_chave_primaria primary key(cha
  
  
  /*################################### curso SQL e PL/SQL Mv sistemas#########################*/
- select nome_da_coluna from nome_da_tabela where nome_da_coluna like 'palavra_de_busca%';
+ select nome_da_coluna from nome_da_tabela where nome_da_coluna like '%palavra_de_busca%';
 
- select --> "O que buscamos?"
- from -->"Onde buscamos?"
+select --> "O que buscamos?"
+from -->"Onde buscamos?"
 where --> "Como buscamos?"
 
-/*Buscar todos os pacientes que nasceram desde 1990*/
-select NM_PACIENTE from PACIENTE where DT_NASCMENTO >= to_date('01/01/1990','DD/MM/YYYY')
+select --> As colunas são separadas por virgula
+from --> Tabelas são separadas por vígula
+where --> Ligações e restrições separado por AND ou OR
+
+/*Buscar todos os pacientes com o nome Roberto que nasceram desde 1990 até 31/12/1990 e o código e
+ a data do atendimento e o convênio*/
+
+select 
+PACIENTE.NM_PACIENTE,
+PACIENTE.CD_PACIENTE,
+ATENDIME.CD_ATENDIMENTO,
+ATENDIME.DT_ATENDIMENTO,
+CONVENIO.NM_CONVENIO
+ from 
+ PACIENTE,
+ ATENDIME,
+ CONVENIO 
+ where PACIENTE.DT_NASCMENTO BETWEEN to_date('01/01/1990','DD/MM/YYYY') /* BETWEEN é usado para definir intervalos de data*/
+ 					AND to_date('31/12/1990','DD/MM/YY')
+/*
+where DT_NASCMENTO BETWEEN to_date('01/01/1990','DD/MM/YYYY')
+AND to_date('31/12/1990','DD/MM/YY') isso é igual a isso aqui 
+where to_char(PACIENTE.DT_NASCMENTO,'yyyy) = '1990' 
+*/
+ AND PACIENTE.CD_PACIENTE = ATENDIME.CD_PACIENTE /*chave primária = chave estrangeira*/
+ AND CONVENIO.CD_CONVENIO = ATENDIME.CD_CONVENIO /*chave primária = chave estrangeira*/
+ AND PACIENTE.NM_PACIENTE LIKE '%ROBERTO%'/*LIKE No lugar da iguadade para usar o percente*/
+ AND PACIENTE.CD_PACIENTE IN(2,102) /* trás um lista apartir do código que foi usado comom parâmetro*/
+ AND PACIENTE.CD_PACIENTE NOT IN(2,102)/* Trás todos menos os que estão no parâmetro*/
+
+/*Clicar na tabela e aperta F11, mostrar todas as colunas da tabela.*/
+/* Clicar na tabela e aperta F12, mostrar todas a vizualia a estrutura da tabela*/
+/*Ctrl + Shift + seta para cima coloca o testo em caixa autal*/
+/*Ctrl + Shift + seta para baixo coloca o testo em caixa baixa*/
+
+/*################### funções ##########################*/
+
+/*
+to_char, é uma função de tempo semelhante ao BETWEEN, porém sua sintaxe é menor
+to_date,
+trunc,
+round,
+subsstr entre outras...
+*/
