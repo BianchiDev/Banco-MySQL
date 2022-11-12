@@ -158,6 +158,7 @@ select * from nome_da_tabela order by atributo1 asc,atributo2 desc; /* ondena os
 
 /*-----------------------operador group by -----------------------------------------------------------------------------------------------------------------------------*/
 
+GROUP BY -- É uma cláusula utilizada sempre que precisamos agregar valores (como somatórios, médias, contagens...) eretornar mais de uma coluna 
 
 
 /*------------############update##########-----------*/
@@ -368,6 +369,6 @@ where to_char(PACIENTE.DT_NASCMENTO,'yyyy) = '1990'
 to_char, é uma função de tempo semelhante ao BETWEEN, porém sua sintaxe é menor
 to_date,
 trunc,
-round,
+round, RETORNA O VALOR ARREDONDADO PARA CIMA OU PARA BAIXO DEPENDENDO DA FRAÇÃO DO VALOR 
 subsstr entre outras...
 */
