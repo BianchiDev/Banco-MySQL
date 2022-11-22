@@ -9,6 +9,7 @@
  man = " comando de ajuda para ensinar sobre determinados comando (manual)"
  cd = " Para entrear em outro diretório, para voltar ao diretório raiz"
  cd .. = "Para voltar ao arquivo anteriro"
+ cd ~ = "comando que leva para o diretório hoot"
  mkdir = " criar um diretório"
  rmdir = " Remove um diretório(Apenas diretórios vazios)"
  rm = "Remove um arquivo"
@@ -30,3 +31,8 @@ para indicar que iremos extrair os arquivos.
 O f indica que lemos de um arquivo. E o z, que o arquivo está compactado.
 O parâmetro z na verdade é ignorado na extração, no man fala que só funciona no creation mode.
 Logo poderíamos fazer: tar -xf work.tar.gz."
+
+##################################### grancursos_Linux ###############################
+## Professor Cesar Ciello ##
+ 
+cd ~ = "comando que leva para o diretório hoot"
