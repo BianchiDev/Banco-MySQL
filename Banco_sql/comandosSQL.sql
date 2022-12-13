@@ -156,9 +156,6 @@ select * from nome_da_tabela order by atributo desc; /* ondena os atributos decr
 select * from nome_da_tabela order by atributo1 asc,atributo2 desc; /* ondena os atributos crescente de acordo com atributo1 selecionado e ondena os atributos decrescente de acordo com atributo selecionado2  */
 
 
-/*-----------------------operador group by -----------------------------------------------------------------------------------------------------------------------------*/
-
-GROUP BY -- É uma cláusula utilizada sempre que precisamos agregar valores (como somatórios, médias, contagens...) eretornar mais de uma coluna 
 
 
 /*------------############update##########-----------*/
@@ -214,7 +211,8 @@ UNIQUE /*---INTEGRIDADE DE UNICIDADE(PERMITE A INCLUSÃO APENAS DE VALÇORES ÚN
 ENUM /*---INTEGRIDADE DE DOMÍNIO( LIMITA AS OPÇÕES DE VALORES PARA COLUNA)--*/
 NOT NULL/*--- INTEGRIDADE DE VAZIO(IMPEDE A INCLUSÃO DE VALORES NULOS)--*/
 
-/*###################################################################*/
+
+
 
 
 /*---############# FUNÇÕES DE AGREGAÇÃO ##################--*/
@@ -225,6 +223,18 @@ MIN/*-- PROJETA O MENOR VALOR DE TODOS OS REGISTRO DE UMA TABELA CORN BASE EM UM
 AVG/*--PROJETA A MÉDIA DOS VALORES DE TODOS OS REGISTROS DE UMA TABELA COM BASE EM UMA COLUNA--*/
 SUM/*--PORJETA A SOMA DOS VALORES DE TODOS OS REGISTROS DE UMA TABELA COM BASE EM UMA COLUNA
 
+CEIL/*-- RETORNA O MENOR VARLOR INTEIRO MAIOR OU IGUAL AO VALOR EM QUESTÃO--*/
+FLOOR/*-- RETORNA O MAOIR VALOR INTEIRO MENOR OU IGUAL AO VALOR EM QUESTÃO--*/
+TRUNCATE/*--TRUNCA A FRAÇÃO DE VALORES NUMÉRICOS--*/
+ROUND/*-- RETORNA O VALOR ARREDONDADO PARA CIMA OU PARA BAIXO DEPENDENDO DA FRAÇÃO DO VALOR --*/
+GROUP BY -- É uma cláusula utilizada sempre que precisamos agregar valores (como somatórios, médias, contagens...) e retornar mais de uma coluna 
+ /*O group by NÃO ACEITA APELIDO*/
+
+Union All /*-- Utilizado quando precisamos unir selects com resultados, literalmente, "um em cima do outro". Entretanto, as colunas deve ser iguais.--*/
+
+Subselect /* --> Utilizado precisamos de uma busca dentro de uma busca
+			 --> Não é necessário referenciar a tabela original
+			 --> Pode estar dentro do FROM e do WHERE. */
 /*###########################################################################################*/
 
 
@@ -242,14 +252,6 @@ from
 /*----####################################################################################################################--*/
 
 
-/*---############# FUNÇÕOS CEIL, FLOOR, TRUNCATE E ROUND ###########################################################--*/
-
-CEIL/*-- RETORNA O MENOR VARLOR INTEIRO MAIOR OU IGUAL AO VALOR EM QUESTÃO--*/
-FLOOR/*-- RETORNA O MAOIR VALOR INTEIRO MENOR OU IGUAL AO VALOR EM QUESTÃO--*/
-TRUNCATE/*--TRUNCA A FRAÇÃO DE VALORES NUMÉRICOS--*/
-ROUND/*-- RETORNA O VALOR ARREDONDADO PARA CIMA OU PARA BAIXO DEPENDENDO DA FRAÇÃO DO VALOR --*/
-
-/*--##############################################################################################################--*/
 
 /*################################# OPERADORES ARITIMÉTICOS########################################################-*/
  
@@ -321,7 +323,7 @@ alter table nome_da_tabela add constraint nome_da_chave_primaria primary key(cha
  /*############################## TESTANDO A SEGUNDA FORMA NORMAL #######################################################################*/
  
  
- /*################################### curso SQL e PL/SQL Mv sistemas#########################*/
+ /*################################### curso SQL e PL/SQL Mv sistemas #########################*/
  select nome_da_coluna from nome_da_tabela where nome_da_coluna like '%palavra_de_busca%';
 
 select --> "O que buscamos?"
@@ -372,3 +374,13 @@ trunc,
 round, RETORNA O VALOR ARREDONDADO PARA CIMA OU PARA BAIXO DEPENDENDO DA FRAÇÃO DO VALOR 
 subsstr entre outras...
 */
+
+funções de agrupamento (sum) (group by)
+
+select itreg_fat.cd_reg_fat,
+Round(sum(itreg_fat.vl_unitario), 2) valot_total
+caunt(itreg_fat.cd_reg_fat)nro_de_procedimentos
+Round(Avg(itreg_fat.cd_reg_fat.vl_unitario), 2)valor_medio
+from itreg_fat
+where itreg_fat.cd_reg_fat = 56
+group by itreg_fat.cd_reg_fat

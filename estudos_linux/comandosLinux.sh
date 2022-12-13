@@ -4,7 +4,7 @@
  ls = "Lista de diretório" 
  echo = "repetir, criar uma arquivo"
  cat = "ler o arquivo"
- cat *.txt = " Ler todos os arquivos que possui extenção (.TXT)"
+ -la= " Ler todos os arquivos que possui extenção (.TXT)"
  clear = "Limpar a tela"
  man = " comando de ajuda para ensinar sobre determinados comando (manual)"
  cd = " Para entrear em outro diretório, para voltar ao diretório raiz"
