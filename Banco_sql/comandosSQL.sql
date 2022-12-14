@@ -375,7 +375,7 @@ round, RETORNA O VALOR ARREDONDADO PARA CIMA OU PARA BAIXO DEPENDENDO DA FRAÇÃ
 subsstr entre outras...
 */
 
-funções de agrupamento (sum) (group by)
+/*funções de agrupamento (sum) (group by)
 
 select itreg_fat.cd_reg_fat,
 Round(sum(itreg_fat.vl_unitario), 2) valot_total
@@ -384,3 +384,23 @@ Round(Avg(itreg_fat.cd_reg_fat.vl_unitario), 2)valor_medio
 from itreg_fat
 where itreg_fat.cd_reg_fat = 56
 group by itreg_fat.cd_reg_fat
+*/
+
+select * all_tab_columns /*-- Retorna todas as colunas do banco, com a sua respectiva tabela
+e owner*/ TABELA PADRÃO DO  ORACLE
+
+all_table: --Retorna todas as tabelas do banco, com o número de linhas. "Importante para saber quais tabelas tem dados ou estão vazias, não utilizadas pelo usuário;
+TABELA PADRÃO DO  ORACLE
+
+users -- Todos usuários de banco;
+TABELA PADRÃO DO  ORACLE
+
+Dbasgu.usuários -- todos os usuários do sistema MV;
+TABELA PADRÃO DO  ORACLE
+
+all_constraints -- Todas as constraints no banco. A coluna constraint_type mostra o tipo de constraint (P, U, F e etc...). Enquanto a coluna status mostra se está habilitada(ENABLE) ou desabilitada(DESABLE).
+TABELA PADRÃO DO  ORACLE
+
+                  ------ Site Importantes--------
+ https://sqlformat.org/ -- Identa(organiza)scripts.
+ https://www.w3school.com/sql/ -- guia de comandos.
