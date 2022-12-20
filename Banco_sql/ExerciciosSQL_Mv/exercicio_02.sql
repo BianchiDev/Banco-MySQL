@@ -12,7 +12,7 @@ FROM
     convenio
 
 WHERE 
-    paciente.cd_paciente = atemdime.cd_paciente 
+    paciente.cd_paciente = atemdime.cd_paciente,
     convenio.cd_convenio = atendime.cd_convenio
 
 and
