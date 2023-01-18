@@ -23,3 +23,5 @@ select case when atendime.tp_atendimento = 'I' THEN 'Internacao'
     where
     to char(atendime.dt_atendimento, 'mm/yyyy') = '01/2018'
     group by  atendime.tp_atendimento
+
+    /* Quando usar só o case = quando precisar trazer dados entre dados. */

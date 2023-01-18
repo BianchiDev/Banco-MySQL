@@ -1,6 +1,6 @@
 /*DML São operações no banco que alteram ou criam dados. Elas são DELETE, INSERT e UPDATE*/
 /*o QUE É UMA SESSÃO "É sua conexão com o banco". Todas as alterações que você fizer no banco, vão estar presente apenas na sua sessão até você dar um commit.*/
-/*Commit/ Rollback*/
+/*O que é Commit/ Rollback são comandos para efetivar ou retornar uma operação de DML. Até isso ser realizado somente a sua sessão estará vendo a alteração.*/
 
 
 
