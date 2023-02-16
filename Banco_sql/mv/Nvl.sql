@@ -1,4 +1,4 @@
-/*NVL é utilizado para transformar um resultado nulo em outro não nulo;
+/*  é utilizado para transformar um resultado nulo em outro não nulo;
 No exemplo abaixo, eu quero que todos os cd_prestador que são nulo retornem o numero 99999*/
 
 select
