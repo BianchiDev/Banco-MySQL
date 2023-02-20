@@ -36,3 +36,17 @@ Logo poderíamos fazer: tar -xf work.tar.gz."
 ## Professor Cesar Ciello ##
  
 cd ~ = "comando que leva para o diretório hoot"
+ls =  "Listar diretórios"
+ls - la = "Listar diretórios ocutos"
+cat ~/.bash_history  ou history= " Lista o histórico de comando em cada terminal"
+!! = "executa o útimo comando"
+!n = "executa o comando da linha no arquivo .bash_history"
+!texto = "Executa o comando mais recente que inicia com o texto"
+!?texto = "executa o comando mais recente que contém o texto"
+Ctrl r texto = "procura comandos que contenham o 'texto' "
+Alt M < = "vai para o início do arquivo .bash_histoty"
+Alt M > = "Vai para o fim do arquivo .bash_histoty"
+########## Caracteres coringas #############
+* = "Faz referência a um nome completo/ rstante de um arquivo/diretóri"
+? = "Faz referência a uma faixa de caracteres de um arquivo/diretório"
+lsblk = "Exibe todos os hardwares de blocos"
