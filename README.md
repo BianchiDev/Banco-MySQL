@@ -14,3 +14,19 @@
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas.
+
+>Modelagem do banco Juros masi
+<p align = "center" 
+><img src="./img/br modelo vendas.jpg" alt="exemplo imagem" width="75%" height="60%"></p><br>
+
+>Modelagem do banco Vende mais
+<p align = "center" 
+><img src="./img/br modelo vendas.jpg" alt="exemplo imagem" width="75%" height="60%"></p>
+
+>Modelagem do banco Vende mais
+<p align = "center" 
+><img src="./img/DENTISTA_.jpg" alt="exemplo imagem" width="75%" height="60%"></p>
+
+>Modelagem do banco supermercado verde mais
+<p align = "center" 
+><img src="./img/supermercado_vende_mais.jpg" alt="exemplo imagem" width="75%" height="60%"></p>
