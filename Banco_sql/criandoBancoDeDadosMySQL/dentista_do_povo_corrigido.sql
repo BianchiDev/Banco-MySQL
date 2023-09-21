@@ -1,6 +1,6 @@
 create database dentista_do_povo;
 use  dentista_do_povo;
-
+ 
 
 create table paciente(
 	id_pac int primary key  not null auto_increment,

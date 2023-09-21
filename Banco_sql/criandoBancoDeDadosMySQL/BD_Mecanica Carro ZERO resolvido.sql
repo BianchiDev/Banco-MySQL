@@ -1,165 +1,179 @@
-/* 
-Scrit do BD_Mecanica Carro ZERO
- */
 
-create database BD_mecanica;
-use BD_mecanica;
+-- Crie o banco de dados BD_mecanica se ele não existir e use-o.
+CREATE DATABASE IF NOT EXISTS BD_mecanica;
+USE BD_mecanica;
 
-create table Cliente(
-cod_cli int primary key auto_increment not null,
-nome_cli varchar(200) not null,
-cpf_cli varchar(50) not null,
-rg_cli varchar(50) not null,
-telefone_cli varchar(50) not null,
-endereco_cli varchar(200) not null,
-email_cli varchar(100),
-sexo_cli varchar(50),
-renda_cli double not null,
-data_Nasc_cli date not null,
-status_cli varchar (100)
+-- Tabela Cliente com a coluna cod_cli como chave primária.
+CREATE TABLE Cliente (
+    cod_cli INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nome_cli VARCHAR(200) NOT NULL,
+    cpf_cli VARCHAR(50) NOT NULL,
+    rg_cli VARCHAR(50) NOT NULL,
+    telefone_cli VARCHAR(50) NOT NULL,
+    endereco_cli VARCHAR(200) NOT NULL,
+    email_cli VARCHAR(100),
+    sexo_cli VARCHAR(50),
+    renda_cli DOUBLE NOT NULL,
+    data_Nasc_cli DATE NOT NULL,
+    status_cli VARCHAR(100)
 );
 
-create table Funcionario(
-cod_func int primary key auto_increment not null,
-nome_func varchar(200) not null,
-funcao_func varchar(100) not null,
-cpf_func varchar(50) not null,
-rg_func varchar(50) not null,
-telefone_func varchar(50),
-endereco_func varchar (200),
-email_func varchar (200),
-sexo_func varchar (20),
-salario_func double not null
+-- Tabela Funcionario com a coluna cod_func como chave primária.
+CREATE TABLE Funcionario (
+    cod_func INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nome_func VARCHAR(200) NOT NULL,
+    funcao_func VARCHAR(100) NOT NULL,
+    cpf_func VARCHAR(50) NOT NULL,
+    rg_func VARCHAR(50) NOT NULL,
+    telefone_func VARCHAR(50),
+    endereco_func VARCHAR(200),
+    email_func VARCHAR(200),
+    sexo_func VARCHAR(20),
+    salario_func DOUBLE NOT NULL
 );
 
-create table Servico(
-cod_serv int primary key auto_increment not null,
-descricao_serv varchar(300) not null,
-valor_serv double not null,
-tempo_serv time
+-- Tabela Servico com a coluna cod_serv como chave primária.
+CREATE TABLE Servico (
+    cod_serv INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    descricao_serv VARCHAR(300) NOT NULL,
+    valor_serv DOUBLE NOT NULL,
+    tempo_serv TIME
 );
 
-create table Fornecedor(
-cod_forn int primary key auto_increment not null,
-razao_forn varchar(150) not null,
-nome_forn varchar(150) not null,
-cnpj_forn varchar(50) not null,
-endereco_forn varchar(300) not null,
-telefone_forn varchar(50) not null
+-- Tabela Fornecedor com a coluna cod_forn como chave primária.
+CREATE TABLE Fornecedor (
+    cod_forn INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    razao_forn VARCHAR(150) NOT NULL,
+    nome_forn VARCHAR(150) NOT NULL,
+    cnpj_forn VARCHAR(50) NOT NULL,
+    endereco_forn VARCHAR(300) NOT NULL,
+    telefone_forn VARCHAR(50) NOT NULL
 );
 
-create table Produto(
-cod_prod int primary key auto_increment not null,
-nome_prod varchar(300) not null,
-marca_prod varchar(150) not null,
-estoque_prod int not null,
-valor_prod double not null,
-tamanho_prod varchar(5) not null,
-tipo_prod varchar(50) not null
+-- Tabela Produto com a coluna cod_prod como chave primária.
+CREATE TABLE Produto (
+    cod_prod INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nome_prod VARCHAR(300) NOT NULL,
+    marca_prod VARCHAR(150) NOT NULL,
+    estoque_prod INT NOT NULL,
+    valor_prod DOUBLE NOT NULL,
+    tamanho_prod VARCHAR(5) NOT NULL,
+    tipo_prod VARCHAR(50) NOT NULL
 );
 
-create table Compra(
-cod_comp int primary key auto_increment not null,
-data_comp date not null,
-valor_comp double not null,
-quant_itens_comp int,
-forma_Pag_comp varchar(50) not null,
-cod_forn_fk int not null,
-foreign key (cod_forn_fk) references Fornecedor(cod_forn)
+-- Tabela Compra com a coluna cod_comp como chave primária.
+CREATE TABLE Compra (
+    cod_comp INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    data_comp DATE NOT NULL,
+    valor_comp DOUBLE NOT NULL,
+    quant_itens_comp INT,
+    forma_Pag_comp VARCHAR(50) NOT NULL,
+    cod_forn_fk INT NOT NULL,
+    FOREIGN KEY (cod_forn_fk) REFERENCES Fornecedor (cod_forn)
 );
 
-create table Despesa(
-cod_desp int primary key auto_increment not null,
-descricao_desp varchar(200),
-valor_desp double not null,
-data_desp date not null,
-forma_pag_desp varchar(100) not null
+-- Tabela Despesa com a coluna cod_desp como chave primária.
+CREATE TABLE Despesa (
+    cod_desp INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    descricao_desp VARCHAR(200),
+    valor_desp DOUBLE NOT NULL,
+    data_desp DATE NOT NULL,
+    forma_pag_desp VARCHAR(100) NOT NULL
 );
 
-create table Caixa(
-cod_cai int primary key auto_increment not null,
-data_cai date not null,
-saldo_inicial_cai double not null,
-total_recebimento_cai double not null,
-total_pagamento_cai double not null,
-saldo_final_cai double not null,
-cod_func_fk int not null,
-foreign key (cod_func_fk) references funcionario (cod_func)
+-- Tabela Caixa com a coluna cod_cai como chave primária.
+CREATE TABLE Caixa (
+    cod_cai INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    data_cai DATE NOT NULL,
+    saldo_inicial_cai DOUBLE NOT NULL,
+    total_recebimento_cai DOUBLE NOT NULL,
+    total_pagamento_cai DOUBLE NOT NULL,
+    saldo_final_cai DOUBLE NOT NULL,
+    cod_func_fk INT NOT NULL,
+    FOREIGN KEY (cod_func_fk) REFERENCES Funcionario (cod_func)
 );
 
-create table Pagamento(
-cod_pag int primary key auto_increment not null,
-valor_pag double not null,
-parcela_pag double not null,
-data_pag date not null,
-forma_pag varchar(50) not null,
-cod_comp_fk int,
-cod_cai_fk int not null,
-cod_desp_fk int,
-foreign key (cod_comp_fk) references compra (cod_comp),
-foreign key (cod_cai_fk) references caixa (cod_cai),
-foreign key (cod_desp_fk) references despesa (cod_desp)
+-- Tabela Pagamento com a coluna cod_pag como chave primária.
+CREATE TABLE Pagamento (
+    cod_pag INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    valor_pag DOUBLE NOT NULL,
+    parcela_pag DOUBLE NOT NULL,
+    data_pag DATE NOT NULL,
+    forma_pag VARCHAR(50) NOT NULL,
+    cod_comp_fk INT,
+    cod_cai_fk INT NOT NULL,
+    cod_desp_fk INT,
+    FOREIGN KEY (cod_comp_fk) REFERENCES Compra (cod_comp),
+    FOREIGN KEY (cod_cai_fk) REFERENCES Caixa (cod_cai),
+    FOREIGN KEY (cod_desp_fk) REFERENCES Despesa (cod_desp)
 );
 
-create table Venda (
-cod_vend int primary key auto_increment not null,
-valor_vend double not null,
-data_vend date not null,
-hora_vend varchar(20),
-forma_pag_vend varchar(100),
-cod_cli_fk int not null,
-cod_func_fk int not null,
-foreign key (cod_cli_fk) references cliente (cod_cli),
-foreign key (cod_func_fk) references funcionario (cod_func)
+-- Tabela Venda com a coluna cod_vend como chave primária.
+CREATE TABLE Venda (
+    cod_vend INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    valor_vend DOUBLE NOT NULL,
+    data_vend DATE NOT NULL,
+    hora_vend VARCHAR(20),
+    forma_pag_vend VARCHAR(100),
+    cod_cli_fk INT NOT NULL,
+    cod_func_fk INT NOT NULL,
+    FOREIGN KEY (cod_cli_fk) REFERENCES Cliente (cod_cli),
+    FOREIGN KEY (cod_func_fk) REFERENCES Funcionario (cod_func)
 );
 
-create table Recebimento (
-cod_rec int primary key auto_increment not null,
-valor_rec double not null,
-parcela_rec int not null,
-forma_rec varchar(100) not null,
-data_vencimento_rec date not null,
-cod_cai_fk int not null,
-cod_vend_fk int not null,
-foreign key (cod_cai_fk) references caixa (cod_cai),
-foreign key (cod_vend_fk) references Venda(cod_vend)
+-- Tabela Recebimento com a coluna cod_rec como chave primária.
+CREATE TABLE Recebimento (
+    cod_rec INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    valor_rec DOUBLE NOT NULL,
+    parcela_rec INT NOT NULL,
+    forma_rec VARCHAR(100) NOT NULL,
+    data_vencimento_rec DATE NOT NULL,
+    cod_cai_fk INT NOT NULL,
+    cod_vend_fk INT NOT NULL,
+    FOREIGN KEY (cod_cai_fk) REFERENCES Caixa (cod_cai),
+    FOREIGN KEY (cod_vend_fk) REFERENCES Venda (cod_vend)
 );
 
-create table Venda_Serv(
-cod_vser int primary key auto_increment not null,
-cod_vend_fk int not null,
-cod_serv_fk int not null,
-quant_vser int,
-foreign key (cod_vend_fk) references venda (cod_vend),
-foreign key (cod_serv_fk) references servico (cod_serv)
+-- Tabela Venda_Serv com a coluna cod_vser como chave primária.
+CREATE TABLE Venda_Serv (
+    cod_vser INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    cod_vend_fk INT NOT NULL,
+    cod_serv_fk INT NOT NULL,
+    quant_vser INT,
+    FOREIGN KEY (cod_vend_fk) REFERENCES Venda (cod_vend),
+    FOREIGN KEY (cod_serv_fk) REFERENCES Servico (cod_serv)
 );
 
-create table Venda_Prod(
-cod_vpro int primary key auto_increment not null,
-cod_vend_fk int not null,
-cod_prod_fk int not null,
-quant_vpro int,
-foreign key (cod_vend_fk) references venda (cod_vend),
-foreign key (cod_prod_fk) references produto (cod_prod)
+-- Tabela Venda_Prod com a coluna cod_vpro como chave primária.
+CREATE TABLE Venda_Prod (
+    cod_vpro INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    cod_vend_fk INT NOT NULL,
+    cod_prod_fk INT NOT NULL,
+    quant_vpro INT,
+    FOREIGN KEY (cod_vend_fk) REFERENCES Venda (cod_vend),
+    FOREIGN KEY (cod_prod_fk) REFERENCES Produto (cod_prod)
 );
 
-create table Compra_Prod(
-cod_cprod int primary key auto_increment not null,
-cod_comp_fk int not null,
-cod_prod_fk int not null,
-quant_cprod int,
-valor_cprod float,
-foreign key (cod_comp_fk) references Compra (cod_comp),
-foreign key (cod_prod_fk) references Produto (cod_prod)
+-- Tabela Compra_Prod com a coluna cod_cprod como chave primária.
+CREATE TABLE Compra_Prod (
+    cod_cprod INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    cod_comp_fk INT NOT NULL,
+    cod_prod_fk INT NOT NULL,
+    quant_cprod INT,
+    valor_cprod FLOAT,
+    FOREIGN KEY (cod_comp_fk) REFERENCES Compra (cod_comp),
+    FOREIGN KEY (cod_prod_fk) REFERENCES Produto (cod_prod)
 );
 
-create table Funcionario_Servico (
-cod_fserv int not null primary key auto_increment,
-cod_func_fk int not null,
-cod_serv_fk int not null,
-foreign key (cod_func_fk) references Funcionario (cod_func),
-foreign key (cod_serv_fk) references Servico (cod_serv)
+-- Tabela Funcionario_Servico com a coluna cod_fserv como chave primária.
+CREATE TABLE Funcionario_Servico (
+    cod_fserv INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    cod_func_fk INT NOT NULL,
+    cod_serv_fk INT NOT NULL,
+    FOREIGN KEY (cod_func_fk) REFERENCES Funcionario (cod_func),
+    FOREIGN KEY (cod_serv_fk) REFERENCES Servico (cod_serv)
 );
+
 
 /*INSERTS*/
 
@@ -251,27 +265,34 @@ insert into Compra values
 (null, '2017-03-04', 780, 15, 'Cartão', 1),
 (null, '2017-01-10', 900, 45, 'Cartão', 2);
 
-insert into Compra_prod values
-(null, 1, 1, 10, 60.00),
-(null, 1, 2, 25, 105.00),
-(null, 1, 3, 5, 2000.00),
-(null, 2, 4, 10, 100.25),
-(null, 3, 5, 20, 120.50),
-(null, 3, 6, 50, 50.00),
-(null, 4, 7, 20, 62.00),
-(null, 5, 8, 10, 30.00),
-(null, 5, 9, 5, 52.00),
-(null, 5, 10, 10, 68.00),
-(null, 6, 11, 15, 62.00),
-(null, 7, 12, 22, 58.50),
-(null, 7, 13, 30, 69.99),
-(null, 8, 14, 10, 60.00),
-(null, 8, 15, 15, 51.00),
-(null, 9, 16, 5, 1500.50),
-(null, 10, 17, 15, 58.00),
-(null, 10, 18, 10, 46.00),
-(null, 10, 19, 15, 48.99),
-(null, 10, 20, 15, 48.99);
+INSERT INTO BD_mecanica.Compra_Prod (cod_comp_fk, cod_prod_fk, quant_cprod, valor_cprod)
+VALUES
+(1, 1, 10, 60.00),
+(1, 2, 25, 105.00),
+(1, 3, 5, 2000.00),
+(2, 4, 10, 100.25),
+(3, 5, 20, 120.50),
+(3, 6, 50, 50.00),
+(4, 7, 20, 62.00),
+(5, 8, 10, 30.00),
+(5, 9, 5, 52.00),
+(5, 10, 10, 68.00),
+(6, 11, 15, 62.00),
+(7, 12, 22, 58.50),
+(7, 13, 30, 69.99),
+(8, 14, 10, 60.00),
+(8, 15, 15, 51.00),
+(9, 16, 5, 1500.50),
+(10, 17, 15, 58.00),
+(10, 18, 10, 46.00),
+(10, 19, 15, 48.99),
+(10, 20, 15, 48.99);
+
+
+INSERT INTO BD_mecanica.Compra_Prod
+(cod_comp_fk, cod_prod_fk, quant_cprod, valor_cprod)
+VALUES(0, 0, 0, 0);
+
 
 insert into Despesa values
 (null, 'Luz', 800, '2017-02-28', 'A vista'),
@@ -338,7 +359,7 @@ insert into Venda_Serv values
 (null, 9, 9, 1),
 (null, 10, 10, 2);
 
-insert into Venda_prod values
+insert into BD_mecanica.Venda_Prod  values
 (null, 1, 1, 5),
 (null, 2, 2, 3),
 (null, 3, 3, 2),
@@ -382,6 +403,9 @@ insert into Recebimento values
 (null, 300.00, 1, 'Cartão', '2017-02-26', 9, 9),
 (null, 300.00, 2, 'Cheque', '2017-02-27', 9, 10);
 
+SELECT cod_vpro, cod_vend_fk, cod_prod_fk, quant_vpro
+FROM BD_mecanica.Venda_Prod;
+
 insert into Funcionario_Servico values 
 (null, 6, 1),
 (null, 6, 2),
@@ -391,8 +415,8 @@ insert into Funcionario_Servico values
 
 #PRÁTICA COM UPDATE:
 #Altere o status para ‘Vip’ nos registros dos clientes com renda familiar maior que R$ 3.000,00.
-select * from cliente;
-update cliente set status_cli = 'Vip' where (renda_cli >3000);
+select * from Cliente;
+update Cliente set status_cli = 'Vip' where (renda_cli >3000);
 #Altere o status para ‘Médio’ nos registros dos clientes com renda familiar entre R$ 1.000,00 e R$3.000,00.
 select * from cliente;
 update cliente set status_cli = 'Médio' where (renda_cli between 1000 and 3000);
