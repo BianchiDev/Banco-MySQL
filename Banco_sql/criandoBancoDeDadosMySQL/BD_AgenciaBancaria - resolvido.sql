@@ -215,6 +215,82 @@ select * from Transferência;
 
 
 #EXERCÍCIOS
+# Antes de dropar vamos criar um banco cópia e gerar competencias para 
+# o banco em seguida apagar a tabela 
+	
+		-- Criando o novo_banco
+	CREATE DATABASE novo_banco;
+		-- Copie a estrutura da tabela Agência e insira dados
+	CREATE TABLE novo_banco.Agência AS SELECT * FROM BD_Banco.Agência;
+	
+	-- Copie a estrutura da tabela Banco e insira dados
+	CREATE TABLE novo_banco.Banco AS SELECT * FROM BD_Banco.Banco;
+	
+	-- Copie a estrutura da tabela Cliente e insira dados
+	CREATE TABLE novo_banco.Cliente AS SELECT * FROM BD_Banco.Cliente;
+	
+	-- Copie a estrutura da tabela conta_corrente e insira dados
+	CREATE TABLE novo_banco.conta_corrente AS SELECT * FROM BD_Banco.Conta_Corrente;
+	
+	-- Copie a estrutura da tabela Depósito e insira dados
+	CREATE TABLE novo_banco.Deposito AS SELECT * FROM BD_Banco.Depósito;
+	
+	-- Copie a estrutura da tabela Pagamento e insira dados
+	CREATE TABLE novo_banco.Pagamento AS SELECT * FROM BD_Banco.Pagamento;
+	
+	-- Copie a estrutura da tabela Saque e insira dados
+	CREATE TABLE novo_banco.Saque AS SELECT * FROM BD_Banco.Saque;
+	
+	-- Copie a estrutura da tabela Transferência e insira dados
+	CREATE TABLE novo_banco.Transferencia AS SELECT * FROM BD_Banco.Transferência;
+
+## Criando usuário e a concessão de privilégios
+
+-- saber quem é o usuário atual no sistema
+SELECT CURRENT_USER();
+
+
+--Crinsndo o usuário BIANCHI
+CREATE USER 'BIANCHI'@'%' IDENTIFIED BY '123456';
+GRANT Create user ON *.* TO 'BIANCHI'@'%';
+GRANT Create routine ON *.* TO 'BIANCHI'@'%';
+GRANT Create temporary tables ON *.* TO 'BIANCHI'@'%';
+GRANT Trigger ON *.* TO 'BIANCHI'@'%';
+GRANT Show view ON *.* TO 'BIANCHI'@'%';
+GRANT Select ON *.* TO 'BIANCHI'@'%';
+GRANT Insert ON *.* TO 'BIANCHI'@'%';
+GRANT Create ON *.* TO 'BIANCHI'@'%';
+GRANT Create view ON *.* TO 'BIANCHI'@'%';
+GRANT Index ON *.* TO 'BIANCHI'@'%';
+GRANT References ON *.* TO 'BIANCHI'@'%';
+GRANT Update ON *.* TO 'BIANCHI'@'%';
+GRANT Alter routine ON *.* TO 'BIANCHI'@'%';
+
+
+-- Criando privilefios para o usuário kayky
+
+CREATE USER 'kayky'@'localhost' IDENTIFIED BY '123456';
+ALTER USER 'kayky'@'localhost'
+WITH
+	MAX_QUERIES_PER_HOUR 1;
+GRANT Alter ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT Create view ON BD_Banco.* TO 'kayky'@'localhost' WITH GRANT OPTION;
+GRANT Index ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT Insert ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT References ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT Select ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT Show view ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT Trigger ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT Update ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT Alter routine ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT Create routine ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT Create temporary tables ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT Execute ON BD_Banco.* TO 'kayky'@'localhost';
+GRANT Lock tables ON BD_Banco.* TO 'kayky'@'localhost' WITH GRANT OPTION;
+
+
+
+
 #1. Adicione o atributo local_sede_ban na tabela Banco.
 
 alter table banco add local_sede_ban varchar(200)not null;
